@@ -5,6 +5,17 @@
 </head>
 <body>
 
+    {% if user.is_authenticated %}
+        <p>Logged in as: {{ user.username }}</p>
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+
+        <hr>
+    {% endif %}
+
     <h1>Student Registration</h1>
 
     <a href="{% url 'student_create' %}">
@@ -13,9 +24,9 @@
 
     <br>
 
-<a href="{% url 'student_dashboard' %}">
-    Student Dashboard
-</a>
+    <a href="{% url 'student_dashboard' %}">
+        Student Dashboard
+    </a>
 
     <hr>
 
